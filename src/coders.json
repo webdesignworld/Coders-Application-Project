@@ -1,0 +1,30 @@
+[
+  {
+    "id": 101,
+    "firstName": "Alice",
+    "lastName": "Johnson",
+    "avatarUrl": "https://i.pravatar.cc/150?img=1",
+    "score": 350
+  },
+  {
+    "id": 102,
+    "firstName": "Bob",
+    "lastName": "Smith",
+    "avatarUrl": "https://i.pravatar.cc/150?img=2",
+    "score": 320
+  },
+  {
+    "id": 103,
+    "firstName": "Emily",
+    "lastName": "Davis",
+    "avatarUrl": "https://i.pravatar.cc/150?img=5",
+    "score": 290
+  },
+  {
+    "id": 104,
+    "firstName": "Michael",
+    "lastName": "Brown",
+    "avatarUrl": "https://i.pravatar.cc/150?img=4",
+    "score": 270
+  }
+]
