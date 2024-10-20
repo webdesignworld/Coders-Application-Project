@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect } from "react";
 import logo from "../assets/images/logo.svg";
 import avatar1 from "../assets/images/avatar1.jpg";
-
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -10,9 +9,9 @@ const Navbar = () => {
 
   useEffect(() => {
     if (isDarkMode) {
-      document.documentElement.classList.add('dark');
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove("dark");
     }
   }, [isDarkMode]);
 
@@ -33,28 +32,23 @@ const Navbar = () => {
           </div>
           <ul className="navlist flex space-x-8 list-none items-center">
             <li>
-              <a
-                className="no-underline text-main-color"
-                to="/"
-            
-              >
+              <Link className="no-underline text-main-color" to="/challenges">
                 Challenges
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                className="no-underline text-main-color"
-                href="./signup.html"
-                target="_blank"
-              >
+              <Link className="no-underline text-main-color" to="/leaderboard">
                 Leaderboard
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
 
         <div className="flex items-center gap-4 relative">
-          <div className="flex items-center gap-2 cursor-pointer" onClick={toggleDropdown}>
+          <div
+            className="flex items-center gap-2 cursor-pointer"
+            onClick={toggleDropdown}
+          >
             <img
               src={avatar1}
               alt="User Avatar"
@@ -82,18 +76,18 @@ const Navbar = () => {
 
           {isDropdownOpen && (
             <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg py-2 z-20">
-              <a
-                href="/profile"
+              <Link
+                to="/"
                 className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 Profile
-              </a>
-              <a
-                href="/logout"
+              </Link>
+              <Link
+                to="/"
                 className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 Logout
-              </a>
+              </Link>
             </div>
           )}
         </div>

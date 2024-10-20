@@ -1,26 +1,32 @@
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
 
+import "./App.css";
+import MainLayout from "./layouts/MainLayout";
+import HomePage from "./pages/HomePage";
+import LeaderboardPage from "./pages/LeaderboardPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import ChallengesPage from "./pages/ChallengesPage";
 
-import './App.css'
-import SignIn from './components/SignIn'
-import SignUp from './components/SignUp'
-import Navbar from './components/Navbar'
-import ChallengesList from './components/ChallengesList'
-import TrendingCategoriesBox from './components/TrendingCategoriesBox'
-import TopKCodersList from './components/TopKCodersList'
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<MainLayout />}>
+      <Route index element={<HomePage />} />
+      <Route path="/leaderboard" element={<LeaderboardPage />} />
+    <Route path='/challenges' element={<ChallengesPage/>}/>
+      {/* <Route path="/signin" element={<SignInPage />} /> */}
+      {/* <Route path="/signup" element={<SignUp />} />  */}
+      <Route path="*" element={<NotFoundPage />} />
+    </Route>
+  )
+);
 
 function App() {
- 
-
-  return (
-    <>
-     <Navbar/>
-       <SignIn/>
-       <SignUp/>
-  <ChallengesList/>
-    <TrendingCategoriesBox/>
-     <TopKCodersList/>
-    </>
-  )
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;

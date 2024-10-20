@@ -1,0 +1,24 @@
+[
+        {
+        "rank": 1,
+        "firstName": "John",
+        "lastName": "Doe",
+        "score": 400,
+        "solvedChallenges": 150
+        },
+        {
+        "rank": 2,
+        "firstName": "Alice",
+        "lastName": "Smith",
+        "score": 350,
+        "solvedChallenges": 140
+        },
+        {
+        "rank": 3,
+        "firstName": "Emma",
+        "lastName": "Johnson",
+        "score": 320,
+        "solvedChallenges": 135
+        }
+     
+        ]
