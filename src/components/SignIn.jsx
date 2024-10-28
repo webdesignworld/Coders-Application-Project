@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import coding from '../assets/images/coding.png'
+import coding from "../assets/images/coding.png";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +16,6 @@ const SignIn = () => {
     setErrors(newErrors);
 
     if (!newErrors.email && !newErrors.password) {
-  
       console.log("Logged in successfully");
     }
   };
@@ -34,7 +34,7 @@ const SignIn = () => {
           className="w-6/12 p-5 flex flex-col justify-center"
         >
           <h1 className="mb-5 text-primary-text-button-color font-bold text-center text-[32px]">
-            Login Now!
+            Join Coders Now!
           </h1>
 
           <input
@@ -46,7 +46,7 @@ const SignIn = () => {
             className="mb-[15px] p-2.5 border border-solid bg-main-color text-white placeholder-white"
           />
           {errors.email && (
-            <p className="error" id="emailError">
+            <p className="error text-red-500" id="emailError">
               Email is required!
             </p>
           )}
@@ -60,23 +60,23 @@ const SignIn = () => {
             className="mb-[15px] p-2.5 border border-solid bg-main-color text-white placeholder-white"
           />
           {errors.password && (
-            <p className="error" id="passwordError">
+            <p className="error text-red-500" id="passwordError">
               Password is required!
             </p>
           )}
 
-          <input
+          <button
             type="submit"
-            id="submit"
-            value="Sign In"
-            className="bg-[#007BFF] text-white mb-[15px] p-2.5 border-solid"
-          />
+            className="bg-[#007BFF] text-white no-underline py-2 px-4 rounded hover:bg-[#0056b3] transition duration-200 ease-in-out"
+          >
+            Login
+          </button>
 
           <p className="mt-2.5 text-center text-[#666666]">
             New to CodeCLA?{" "}
-            <a href="#" className="text-[#007BFF] no-underline">
+            <Link to="/signup" className="text-[#007BFF] no-underline">
               Sign Up
-            </a>
+            </Link>
           </p>
         </form>
       </div>

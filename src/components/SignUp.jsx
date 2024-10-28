@@ -1,121 +1,100 @@
-import React, { useState } from 'react';
-import coding from '../assets/images/coding.png'
+
+
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import coding from '../assets/images/coding.png';
+import { Link } from "react-router-dom";
+
+
+const MySchema = z.object({
+  fname: z.string().min(1, "First name is required"),
+  lname: z.string().min(1, "Last name is required"),
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+});
 
 const SignUp = () => {
-  const [form, setForm] = useState({
-    fname: '',
-    lname: '',
-    email: '',
-    password: '',
-  });
-  const [errors, setErrors] = useState({
-    fname: false,
-    lname: false,
-    email: false,
-    password: false,
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(MySchema),
   });
 
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setForm({ ...form, [id]: value });
-    setErrors({ ...errors, [id]: !value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const newErrors = {
-      fname: !form.fname,
-      lname: !form.lname,
-      email: !form.email,
-      password: !form.password,
-    };
-    setErrors(newErrors);
-
-    if (!Object.values(newErrors).includes(true)) {
-    
-      console.log("Form submitted successfully");
-    }
+  const onSubmit = (data) => {
+    console.log(data);
   };
 
   return (
-    <div className="signup_mail flex justify-center items-center h-screen m-0 font-sans bg-background-color">
-      <div className="signup_form flex w-[70%] bg-white shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-[10px] overflow-hidden">
-        <img
-          className="developer_avatar w-6/12 bg-main-color object-cover"
-          src={coding}
-          alt="developer_avatar"
-        />
-
-        <form
-          id="signupForm"
-          onSubmit={handleSubmit}
-          className="w-6/12 p-5 flex flex-col justify-center"
-        >
-          <h1 className="mb-5 text-primary-text-button-color font-bold text-center text-[32px]">
-            Join Coders Now!
-          </h1>
-
-          <input
-            type="text"
-            id="fname"
-            placeholder="First Name"
-            value={form.fname}
-            onChange={handleChange}
-            className="mb-[15px] p-2.5 border border-solid bg-main-color text-white placeholder-white"
+    <>
+      <div className="flex justify-center items-center h-screen m-0 font-sans bg-background-color">
+        <div className="signup-page flex w-[70%] bg-white shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-[10px] overflow-hidden">
+          <img
+            className="designer_avatar w-6/12 bg-main-color object-cover"
+            src={coding}
+            alt="developer_avatar"
           />
-          {errors.fname && <p className="error" id="fnameError">First Name is required!</p>}
 
-          <input
-            type="text"
-            id="lname"
-            placeholder="Last Name"
-            value={form.lname}
-            onChange={handleChange}
-            className="mb-[15px] p-2.5 border border-solid bg-main-color text-white placeholder-white"
-          />
-          {errors.lname && <p className="error" id="lnameError">Last Name is required!</p>}
+          <form 
+            id="signupForm"
+            onSubmit={handleSubmit(onSubmit)}
+            className="w-6/12 p-5 flex flex-col justify-center"
+          >
+            <h1 className="mb-5 text-primary-text-button-color font-bold text-center text-[32px]">
+              Join Coders Now!
+            </h1>
 
-          <input
-            type="text"
-            id="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-            className="mb-[15px] p-2.5 border border-solid bg-main-color text-white placeholder-white"
-          />
-          {errors.email && <p className="error" id="emailError">Email is required!</p>}
+            <input
+              type="text"
+              {...register("fname")}
+              placeholder="First Name"
+              className="form-control mb-[15px] p-2.5 border border-solid bg-main-color text-white placeholder-white rounded"
+            />
+            {errors.fname && <p className="text-red-500">{errors.fname.message}</p>}
 
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
-            className="mb-[15px] p-2.5 border border-solid bg-main-color text-white placeholder-white"
-          />
-          {errors.password && <p className="error" id="passwordError">Password is required!</p>}
+            <input
+              type="text"
+              {...register("lname")}
+              placeholder="Last Name"
+              className="form-control mb-[15px] p-2.5 border border-solid bg-main-color text-white placeholder-white rounded"
+            />
+            {errors.lname && <p className="text-red-500">{errors.lname.message}</p>}
 
-          <input
-            type="submit"
-            id="submit"
-            value="Sign Up"
-            className="bg-[#007BFF] text-white mb-[15px] p-2.5 border-solid"
-          />
-          
-          <p className="mt-2.5 text-center text-[#666666]">
-            Already have an account?{" "}
-            <a
-              href="./login.html"
-              target="_blank"
-              className="text-[#007BFF] no-underline"
+            <input
+              type="email"
+              {...register("email")}
+              placeholder="Email"
+              className="form-control mb-[15px] p-2.5 border border-solid bg-main-color text-white placeholder-white rounded"
+            />
+            {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+
+            <input
+              type="password"
+              {...register("password")}        
+              placeholder="Password"
+              className="form-control mb-[15px] p-2.5 border border-solid bg-main-color text-white placeholder-white rounded"
+            />
+            {errors.password && <p className="text-red-500">{errors.password.message}</p>}
+
+            <button
+              type="submit"
+              className="bg-[#007BFF] text-white no-underline py-2 px-4 rounded hover:bg-[#0056b3] transition duration-200 ease-in-out"
             >
-              Login
-            </a>
-          </p>
-        </form>
+              Sign Up
+            </button>
+
+            <p className="mt-2.5 text-center text-[#666666]">
+              Already have an account? <Link to="/signin" className="text-[#007BFF] no-underline">
+                Login
+              </Link>
+            </p>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

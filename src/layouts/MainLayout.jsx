@@ -1,14 +1,20 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import Navbar from '../components/Navbar'
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import AuthNavbar from "../components/AuthNavbar";
+import { useState } from "react";
 
 const MainLayout = () => {
-  return (
-    <>
-    <Navbar/>
-   <Outlet/>
-    </>
-  )
-}
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-export default MainLayout
+  return (
+     <>
+   <AuthNavbar/> 
+   {isAuthenticated && <Navbar />}
+      <Outlet />
+    </>
+  );
+};
+
+export default MainLayout;
+
