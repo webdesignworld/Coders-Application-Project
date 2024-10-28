@@ -12,12 +12,12 @@ const AuthNavbar = () => {
         <ul className="flex space-x-6">
           <li>
             <Link to="/signin" className="flex items-center text-lg hover:text-blue-300 transition-colors">
-              <FaSignInAlt className="mr-2" /> Sign In
+              <FaSignInAlt className="mr-2" /> Log in
             </Link>
           </li>
           <li>
             <Link to="/signup" className="flex items-center text-lg hover:text-blue-300 transition-colors">
-              <FaUser className="mr-2" /> Sign Up
+              <FaUser className="mr-2" /> Sign up
             </Link>
           </li>
         </ul>

@@ -75,7 +75,7 @@ const SignIn = () => {
           <p className="mt-2.5 text-center text-[#666666]">
             New to CodeCLA?{" "}
             <Link to="/signup" className="text-[#007BFF] no-underline">
-              Sign Up
+              Sign up
             </Link>
           </p>
         </form>

@@ -83,12 +83,12 @@ const SignUp = () => {
               type="submit"
               className="bg-[#007BFF] text-white no-underline py-2 px-4 rounded hover:bg-[#0056b3] transition duration-200 ease-in-out"
             >
-              Sign Up
+              Sign up
             </button>
 
             <p className="mt-2.5 text-center text-[#666666]">
               Already have an account? <Link to="/signin" className="text-[#007BFF] no-underline">
-                Login
+                Log in
               </Link>
             </p>
           </form>
